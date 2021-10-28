@@ -1,0 +1,55 @@
+// Here you can add other styles
+@import "~tailwindcss/base";
+@import "~tailwindcss/components";
+@import "~tailwindcss/utilities";
+
+// a{
+//   color: aliceblue !important;
+// }
+.amavia__bg_card{
+background: rgb(255, 255, 255) !important;
+color: #6CAD02 !important;
+}
+.amavia__logo_login img{
+width: 40% !important;
+}
+.amavia_flex{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.amavia__btn{
+background: #00A99F !important;
+border-color: transparent !important;
+color: aliceblue !important;
+}
+
+.amavia__bg{
+background: #00A99F !important;
+}
+.amavia__txt{
+color: #00A99F !important;
+}
+
+// side_bar
+// remover scrollbar
+::-webkit-scrollbar {
+width: 0px;
+background: transparent; /* make scrollbar transparent */
+}
+
+.amavia__bg_sidebar{
+background: aliceblue !important;
+background: #00A99F !important;
+}
+.amavia__bg_sidebar a{
+color: aliceblue !important;
+}
+.amavia__header_sidebar_bg{
+background: white !important;
+}
+
+// table
+.amavia__table_th_txt_center th{
+text-align: center !important;
+}
