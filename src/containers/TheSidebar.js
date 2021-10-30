@@ -15,8 +15,10 @@ import navigation from "./_nav";
 
 const TheSidebar = () => {
   const dispatch = useDispatch();
-  const show = useSelector((state) => state.sidebarShow);
+  const show = useSelector((state) => state.sideBarReducer.sidebarShow);
 
+  console.log(show);
+  // const show = true
   return (
     <CSidebar
       show={show}

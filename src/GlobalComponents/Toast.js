@@ -1,46 +1,37 @@
 import { CToast, CToastBody, CToaster, CToastHeader } from "@coreui/react";
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 export default function Toast() {
-  let toasts = [
-    { position: 'bottom-center', autohide: 1500},
-  ];
-  let toasters = (()=>{
-    return toasts.reduce((toasters, toast) => {
-      toasters[toast.position] = toasters[toast.position] || []
-      toasters[toast.position].push(toast)
-      return toasters
-    }, {})
-  })();
+  const dispatch = useDispatch();
+  const toast = useSelector((state) => state.toastReducer.toast);
+  useEffect(() => {
 
+    return () => {
+      dispatch({ type: "rrr", toast: false })
+    }
+  }, [])
   return (
     <>
-      {Object.keys(toasters).map((toasterKey) => (
         <CToaster
-          position={toasterKey}
-          key={'toaster' + toasterKey}
+          position="bottom-center"
+          key={'toaster'}
         >
-          {
-          toasters[toasterKey].map((toast, key)=>{
-            return(
               <CToast
-                key={'toast' + key}
-                show={true}
-                autohide={toast.autohide}
-                fade={toast.fade}
+                key={'toast'}
+                show={toast}
+                autohide={1500}
+                fade={true}
                 color="dark"
               >
-                <CToastHeader closeButton={toast.closeButton}>
+                <CToastHeader closeButton={true}>
                   Erro
                 </CToastHeader>
                 <CToastBody>
-                  {`This is a toast in ${toasterKey} positioned toaster number ${key + 1}.`}
+                  {`concluir implementação do toast`}
                 </CToastBody>
               </CToast>
-            )
-          })
-          }
         </CToaster>
-      ))}
     </>
   )
 
