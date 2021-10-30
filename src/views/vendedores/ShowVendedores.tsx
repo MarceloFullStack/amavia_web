@@ -6,9 +6,13 @@ import { useDispatch } from 'react-redux';
 
 export const ShowVendedores: React.FC = () => {
   const dispatch = useDispatch();
+  const showToast =  async ()=>{
+     await dispatch({ type: "rrr", toast: false })
+     await dispatch({ type: "rrr", toast: true })
+  }
   return (
     <>
-    <button onClick={() => dispatch({ type: "rrr", toast: true })}>chamar toast</button>
+    <button onClick={()=> showToast()}>chamar toast</button>
     <button onClick={() => dispatch({ type: "rrr", toast: false })}>fechar toast</button>
       <CCard>
       <CCardHeader>

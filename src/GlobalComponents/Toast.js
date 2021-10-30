@@ -1,10 +1,11 @@
 import { CToast, CToastBody, CToaster, CToastHeader } from "@coreui/react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 export default function Toast() {
   const dispatch = useDispatch();
   const toast = useSelector((state) => state.toastReducer.toast);
+
   useEffect(() => {
 
     return () => {

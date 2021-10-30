@@ -3,7 +3,7 @@ const initialState = {
 }
 
  export default function toastReducer  (state = initialState, { type, ...rest }){
-  console.log("ahuhauhuah");
+  console.log("ahuhauhuah", state.toast);
   switch (type) {
     case 'rrr':
       return {...state, ...rest }
