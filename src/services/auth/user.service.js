@@ -1,5 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
-import authHeader from "./auth-header";
+import axios, {  } from "axios";
 
 const API_URL = "http://localhost:8099/api/";
 
@@ -14,16 +13,14 @@ var user = JSON.parse(localStorage.getItem('user')) ;
 
 
 class UserService {
-  getPublicContent() {
-    return axios.get(API_URL + "all");
+
+
+  getAll(url) {
+    return axios.get(API_URL + url);
   }
 
-  getAll() {
-    return axios.get(API_URL + "employee");
-  }
-
-  getModeratorBoard() {
-    return axios.get(API_URL + "mod");
+  create(url, payload) {
+    return axios.post(API_URL + url, payload);
   }
 
   getAdminBoard() {

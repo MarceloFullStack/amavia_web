@@ -1,13 +1,11 @@
-import React from 'react'
+import CIcon from '@coreui/icons-react';
 import {
-  CBadge,
   CDropdown,
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
   CImg
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+} from '@coreui/react';
 import { useHistory } from 'react-router-dom';
 
 const TheHeaderDropdown = () => {

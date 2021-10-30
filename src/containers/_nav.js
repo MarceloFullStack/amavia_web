@@ -19,13 +19,18 @@ const _nav =  [
   {
     _tag: 'CSidebarNavDropdown',
     name: 'Vendedores',
-    route: '/base',
+    route: 'vendedores',
     icon: 'cil-puzzle',
     _children: [
       {
         _tag: 'CSidebarNavItem',
         name: 'Visualizar vendedores',
         to: '/vendedores/show_vendedores',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Cadastrar Vendedor',
+        to: '/vendedores/new_vendedor',
       },
     ],
   },

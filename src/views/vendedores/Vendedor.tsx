@@ -1,11 +1,10 @@
 import React from 'react'
-import VendedorDatatable from './components/VendedorDatatable'
-
+import { useParams } from "react-router";
 export const  Vendedor: React.FC = () => {
+  const { id } = useParams<{id?: string}>();
   return (
     <div>
-            <VendedorDatatable/>
-
+      show vendedor id: {id}
     </div>
   )
 }

@@ -86,12 +86,12 @@ const routes = [
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
   //vendedores
+  { path: '/vendedores/new_vendedor',  name: 'NewVendedor', component: NewVendedor },
+  { path: '/vendedores/show_vendedores',  name: 'ShowVendedores', component: ShowVendedores },
+  { path: '/vendedores/edit_vendedor',  name: 'EditVendedor', component: EditVendedor },
+  { path: '/vendedores/delete_vendedor',  name: 'DeleteVendedor', component: DeleteVendedor },
   { path: '/vendedores', exact: true, name: 'Vendedores', component: Vendedores },
-  { path: '/vendedores/:id', exact: true, name: 'Vendedor Details', component: Vendedor },
-  { path: '/vendedores/show_vendedores', exact: true, name: 'ShowVendedores', component: ShowVendedores },
-  { path: '/vendedores/new_vendedor', exact: true, name: 'NewVendedor', component: NewVendedor },
-  { path: '/vendedores/edit_vendedor', exact: true, name: 'EditVendedor', component: EditVendedor },
-  { path: '/vendedores/delete_vendedor', exact: true, name: 'DeleteVendedor', component: DeleteVendedor }
+  { path: '/vendedores/:id', exact: true, name: 'Vendedores', component: Vendedor },
 ];
 
 export default routes;

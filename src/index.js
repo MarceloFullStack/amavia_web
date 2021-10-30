@@ -3,6 +3,8 @@ import 'react-app-polyfill/stable';
 import 'core-js';
 import './polyfill'
 import React from 'react';
+import Toast from 'src/GlobalComponents/Toast.js';
+
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -17,6 +19,7 @@ React.icons = icons
 ReactDOM.render(
   <Provider store={store}>
     <App/>
+    <Toast />
   </Provider>,
   document.getElementById('root')
 );
