@@ -1,4 +1,10 @@
 import React from 'react';
+import { DeleteVendedor } from './views/vendedores/DeleteVendedor';
+import { EditVendedor } from './views/vendedores/EditVendedor';
+import { NewVendedor } from './views/vendedores/NewVendedor';
+import { ShowVendedores } from './views/vendedores/ShowVendedores';
+import { Vendedor } from './views/vendedores/Vendedor';
+import { Vendedores } from './views/vendedores/Vendedores';
 
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
@@ -78,7 +84,14 @@ const routes = [
   { path: '/notifications/toaster', name: 'Toaster', component: Toaster },
   { path: '/widgets', name: 'Widgets', component: Widgets },
   { path: '/users', exact: true,  name: 'Users', component: Users },
-  { path: '/users/:id', exact: true, name: 'User Details', component: User }
+  { path: '/users/:id', exact: true, name: 'User Details', component: User },
+  //vendedores
+  { path: '/vendedores', exact: true, name: 'Vendedores', component: Vendedores },
+  { path: '/vendedores/:id', exact: true, name: 'Vendedor Details', component: Vendedor },
+  { path: '/vendedores/show_vendedores', exact: true, name: 'ShowVendedores', component: ShowVendedores },
+  { path: '/vendedores/new_vendedor', exact: true, name: 'NewVendedor', component: NewVendedor },
+  { path: '/vendedores/edit_vendedor', exact: true, name: 'EditVendedor', component: EditVendedor },
+  { path: '/vendedores/delete_vendedor', exact: true, name: 'DeleteVendedor', component: DeleteVendedor }
 ];
 
 export default routes;

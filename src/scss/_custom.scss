@@ -53,3 +53,22 @@ background: white !important;
 .amavia__table_th_txt_center th{
 text-align: center !important;
 }
+
+.title{
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  margin-bottom: 20px !important;
+}
+.page-link{
+  color: #00A99F;
+}
+.page-link:hover{
+  color: gray;
+}
+.page-item.active .page-link{
+   z-index: 3;
+    color: #fff;
+    background-color: #00A99F;
+    border-color: #00d5c6;
+}
+

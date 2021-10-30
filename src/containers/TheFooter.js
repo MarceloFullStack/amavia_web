@@ -3,7 +3,7 @@ import { CFooter } from '@coreui/react'
 
 const TheFooter = () => {
   return (
-    <CFooter fixed={false}>
+    <CFooter fixed={true}>
       <div>
         <a href="https://coreui.io" target="_blank" rel="noopener noreferrer">Copam</a>
         <span className="mr-2">&copy; 2020 - Informática</span>

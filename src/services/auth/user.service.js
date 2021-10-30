@@ -1,27 +1,37 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "http://localhost:8090/api/";
+const API_URL = "http://localhost:8099/api/";
+
+var user = JSON.parse(localStorage.getItem('user')) ;
+
+  axios.interceptors.request.use(function (config) {
+    const token = user?.access_token || "";
+    config.headers.Authorization =  `Bearer ${token}`;
+
+    return config;
+  });
+
 
 class UserService {
   getPublicContent() {
     return axios.get(API_URL + "all");
   }
 
-  getUserBoard() {
-    return axios.get(API_URL + "user", { headers: authHeader() });
+  getAll() {
+    return axios.get(API_URL + "employee");
   }
 
   getModeratorBoard() {
-    return axios.get(API_URL + "mod", { headers: authHeader() });
+    return axios.get(API_URL + "mod");
   }
 
   getAdminBoard() {
-    return axios.get(API_URL + "admin", { headers: authHeader() });
+    return axios.get(API_URL + "admin");
   }
 
   isAuthenticated() {
-      return axios.post("http://localhost:8099/api/valid", {}, { headers: authHeader() })
+      return axios.post("http://localhost:8099/api/valid", {})
   }
 }
 export default new UserService();
