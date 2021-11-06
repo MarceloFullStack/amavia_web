@@ -35,6 +35,8 @@
     "axios": "^0.24.0",
     "classnames": "^2.2.6",
     "core-js": "^3.9.1",
+    "devextreme": "21.2.3",
+    "devextreme-react": "21.2.3",
     "enzyme": "^3.11.0",
     "jsonwebtoken": "^8.5.1",
     "prop-types": "^15.7.2",
