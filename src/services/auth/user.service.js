@@ -18,9 +18,15 @@ class UserService {
   getAll(url) {
     return axios.get(API_URL + url);
   }
+  getOne(url, id) {
+    return axios.get(API_URL + url + id);
+  }
 
   create(url, payload) {
     return axios.post(API_URL + url, payload);
+  }
+  update(url, payload) {
+    return axios.put(API_URL + url , payload);
   }
 
   getAdminBoard() {

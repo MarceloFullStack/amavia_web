@@ -5,17 +5,15 @@ import {
 import React, { useEffect, useState } from "react";
 import { MascaraCPF } from "src/helpers/helpers";
 import UserService from "src/services/auth/user.service";
-interface DatatableItems {
-  id: number;
-  name: string;
-  cpf: string;
-}
+import { VendedorForm } from './VendedorForm';
 export default function VendedorDatatable() {
-  const [items, setItems] = useState<DatatableItems[]>([]);
+  const [items, setItems] = useState([]);
+  const [details, setDetails] = useState([]);
+  const [showEdit, setShowEdit] = useState(false);
 
   useEffect(() => {
     UserService.getAll('employee').then(({ data }) => {
-      let dataAdapter = data.map((user: DatatableItems) => {
+      let dataAdapter = data.map((user) => {
         return {
           id: user.id,
           name: user.name,
@@ -30,10 +28,9 @@ export default function VendedorDatatable() {
     };
   }, []);
 
-  const [details, setDetails] = useState([]);
   // const [items, setItems] = useState(usersData)
 
-  const toggleDetails = (index: never) => {
+  const toggleDetails = (index) => {
     const position = details.indexOf(index);
     let newDetails = details.slice();
     if (position !== -1) {
@@ -58,7 +55,7 @@ export default function VendedorDatatable() {
     },
   ];
 
-  const getBadge = (status: any) => {
+  const getBadge = (status) => {
     switch (status) {
       case "Active":
         return "success";
@@ -88,12 +85,12 @@ export default function VendedorDatatable() {
         border
         pagination
         scopedSlots={{
-          status: (item: { status: any }) => (
+          status: (item) => (
             <td>
               <CBadge color={getBadge(item.status)}>{item.status}</CBadge>
             </td>
           ),
-          show_details: (item: any, index: never) => {
+          show_details: (item, index) => {
             return (
               <td className="py-2">
                 <CButton
@@ -111,42 +108,21 @@ export default function VendedorDatatable() {
             );
           },
           details: (
-            item: {
-              username:
-                | boolean
-                | React.ReactChild
-                | React.ReactFragment
-                | React.ReactPortal
-                | null
-                | undefined;
-              registered:
-                | string
-                | number
-                | boolean
-                | {}
-                | React.ReactElement<
-                    any,
-                    string | React.JSXElementConstructor<any>
-                  >
-                | React.ReactNodeArray
-                | React.ReactPortal
-                | null
-                | undefined;
-            },
-            index: never
+            item,
+            index
           ) => {
             return (
               <CCollapse show={details.includes(index)}>
                 <CCardBody>
-                  <h4>{item.username}</h4>
-                  <p className="text-muted mb-1">Ações: {item.registered}</p>
+                {showEdit ? <VendedorForm {...item}/> : null}
+                  <p className="text-muted mb-1">Ações:</p>
                   <CButton size="sm" color="info">
                     Ver detalhes
                   </CButton>
-                  <CButton size="sm" color="warning" className="ml-1 text-white">
-                    Editar usuário
+                  <CButton size="sm" color="warning" className="ml-1 text-white" onClick={() => setShowEdit(!showEdit)}>
+                    {showEdit ? 'Cancelar Edição' : 'Editar'}
                   </CButton>
-                  <CButton size="sm" color="danger" className="ml-1">
+                  <CButton size="sm" color="danger" className="ml-1" >
                     Deletar usuário
                   </CButton>
                 </CCardBody>
