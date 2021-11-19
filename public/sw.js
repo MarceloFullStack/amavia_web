@@ -11,7 +11,7 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(function(cache) {
         console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+        return cache.addAll(urlsToCache, {credentials: 'same-origin'});
       })
   );
 });
@@ -30,3 +30,10 @@ self.addEventListener('fetch', event => {
     )
   );
 });
+
+self.addEventListener("sync",(event)=> {
+  console.dir(event)
+    if (event.tag === "message-sync") {
+        console.log("ENVIANDO SERVICOS OFFLINE")
+    }
+})

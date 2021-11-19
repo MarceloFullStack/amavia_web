@@ -14,7 +14,29 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Primeiro domínio']
+    _children: ['Lojas']
+  },
+  {
+    _tag: 'CSidebarNavDropdown',
+    name: 'Lojas',
+    route: 'lojas',
+    icon: 'cil-puzzle',
+    _children: [
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Visualizar lojas',
+        to: '/lojas',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Cadastrar Loja',
+        to: '/lojas/new_loja',
+      },
+    ],
+  },
+  {
+    _tag: 'CSidebarNavTitle',
+    _children: ['Vendedores']
   },
   {
     _tag: 'CSidebarNavDropdown',
@@ -34,6 +56,36 @@ const _nav =  [
       },
     ],
   },
+  {
+    _tag: 'CSidebarNavTitle',
+    _children: ['Metas e Objetivos']
+  },
+  {
+    _tag: 'CSidebarNavDropdown',
+    name: 'Metas',
+    route: 'produtos',
+    icon: 'cil-puzzle',
+    _children: [
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Cadastrar metas',
+        to: '/produtos',
+      }
+    ],
+  },
+  {
+    _tag: 'CSidebarNavDropdown',
+    name: 'Objetivos',
+    route: 'servicos',
+    icon: 'cil-puzzle',
+    _children: [
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Cadastrar objetivos',
+        to: '/servicos',
+      }
+    ],
+  },
 
 
   {
@@ -41,11 +93,11 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Outro dominio'],
+    _children: ['Vendas'],
   },
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Páginas',
+    name: 'Vendas',
     route: '/pages',
     icon: 'cil-star',
     _children: [

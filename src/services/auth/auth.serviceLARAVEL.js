@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:1337/auth/";
+const API_URL = "http://localhost:8099/api/auth/";
 
 class AuthService {
   login(formData) {
@@ -9,22 +9,15 @@ class AuthService {
     let {email, password} = object;
 
     return axios
-      .post(API_URL + "local", {
-        "identifier": email,
+      .post(API_URL + "login", {
+        email,
         password
-      }, {
-        headers: {"Authorization": '', 'Content-Type': 'application/json'}
       })
       .then(response => {
-        if (response.data.jwt) {
+        if (response.data.access_token) {
           localStorage.setItem("user", JSON.stringify(response.data));
-          window.location = '/#/dashboard'
-
         }
         return response.data;
-      }).catch(error => {
-        return console.log(error.response.data);
-
       });
   }
 

@@ -6,13 +6,19 @@ import React, { useEffect, useState } from "react";
 import { MascaraCPF } from "src/helpers/helpers";
 import UserService from "src/services/auth/user.service";
 import { VendedorForm } from './VendedorForm';
+const registerBackgroundSync = () => {
+  navigator.serviceWorker.ready
+    .then((swRegistration) => swRegistration.sync.register("message-sync"))
+    .catch((err) => console.log(err));
+};
+
 export default function VendedorDatatable() {
   const [items, setItems] = useState([]);
   const [details, setDetails] = useState([]);
   const [showEdit, setShowEdit] = useState(false);
 
   useEffect(() => {
-    UserService.getAll('employee').then(({ data }) => {
+    UserService.getAll('vendedores').then(({ data }) => {
       let dataAdapter = data.map((user) => {
         return {
           id: user.id,
@@ -21,6 +27,12 @@ export default function VendedorDatatable() {
         };
       });
       setItems(dataAdapter);
+      console.log(items)
+
+    }).catch(() => {
+      console.log("registrando servico em background")
+      registerBackgroundSync()
+
     });
 
     return () => {

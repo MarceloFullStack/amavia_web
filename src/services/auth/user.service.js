@@ -1,11 +1,11 @@
 import axios, {  } from "axios";
 
-const API_URL = "http://localhost:8099/api/";
+const API_URL = "http://localhost:1337/";
 
 var user = JSON.parse(localStorage.getItem('user')) ;
 
   axios.interceptors.request.use(function (config) {
-    const token = user?.access_token || "";
+    const token = user?.jwt || "";
     config.headers.Authorization =  `Bearer ${token}`;
 
     return config;
@@ -27,6 +27,9 @@ class UserService {
   }
   update(url, payload) {
     return axios.put(API_URL + url , payload);
+  }
+  delete(url, id) {
+    return axios.delete(API_URL + url + id);
   }
 
   getAdminBoard() {

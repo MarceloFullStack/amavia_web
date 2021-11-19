@@ -32,13 +32,6 @@ const Login = () => {
     //   console.log(key, value);
     //  }
     AuthService.login(formData)
-    .then(() => {
-      window.location = '/#/dashboard'        // window.location = "/";
-        // window.location.reload();
-
-    })
-    .catch(() => {})
-
   };
   //get formdata react
   return (

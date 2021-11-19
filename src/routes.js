@@ -5,6 +5,10 @@ import { NewVendedor } from './views/vendedores/NewVendedor';
 import { ShowVendedores } from './views/vendedores/ShowVendedores';
 import { Vendedor } from './views/vendedores/Vendedor';
 import { Vendedores } from './views/vendedores/Vendedores';
+import  Produtos  from './views/produtos';
+import  Servicos  from './views/servicos';
+import  Lojas  from './views/lojas/show_lojas';
+import  NewLoja  from './views/lojas/new_loja';
 
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
@@ -92,6 +96,13 @@ const routes = [
   { path: '/vendedores/delete_vendedor',  name: 'DeleteVendedor', component: DeleteVendedor },
   { path: '/vendedores', exact: true, name: 'Vendedores', component: Vendedores },
   { path: '/vendedores/:id', exact: true, name: 'Vendedores', component: Vendedor },
+  //produtos
+  { path: '/produtos',  name: 'Produtos', component: Produtos },
+  //produtos
+  { path: '/servicos',  name: 'Servicos', component: Servicos },
+  { path: '/lojas',  name: 'Lojas', component: Lojas , exact: true},
+  { path: '/lojas/new_loja/:id',  name: 'Editar Loja', component: NewLoja },
+  { path: '/lojas/new_loja',  name: 'Criar Loja', component: NewLoja , exact: true },
 ];
 
 export default routes;

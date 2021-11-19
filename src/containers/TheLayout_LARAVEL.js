@@ -10,8 +10,8 @@ const TheLayout = () => {
 
   useEffect(() => {
     var token = '';
-    if(user && user.jwt){
-      token = user.jwt
+    if(user && user.access_token){
+      token = user.access_token
     }
     if (!user) {
       setAuthenticated(false);
