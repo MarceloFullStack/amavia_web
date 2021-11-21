@@ -63,13 +63,13 @@ const _nav =  [
   {
     _tag: 'CSidebarNavDropdown',
     name: 'Metas',
-    route: 'produtos',
+    route: 'metas',
     icon: 'cil-puzzle',
     _children: [
       {
         _tag: 'CSidebarNavItem',
         name: 'Cadastrar metas',
-        to: '/produtos',
+        to: '/metas',
       }
     ],
   },

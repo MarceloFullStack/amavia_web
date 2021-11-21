@@ -1,9 +1,10 @@
 import React from 'react'
+import Show from './show_metas';
 
 function Produto() {
   return (
     <div>
-      Produto
+      <Show/>
     </div>
   )
 }

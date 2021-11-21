@@ -7,7 +7,7 @@ import { CIcon } from '@coreui/icons-react';
 import { CBadge } from '@coreui/react';
 import { CCardBody } from '@coreui/react';
 
-function ShowLojas() {
+function Show() {
   const history = useHistory();
   const [render, setRender] = useState("");
 
@@ -83,4 +83,4 @@ function ShowLojas() {
   );
 }
 
-export default ShowLojas;
+export default Show;

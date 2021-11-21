@@ -3,7 +3,7 @@ import React from 'react'
 function Servico() {
   return (
     <div>
-      Servico
+      OBJETIVOSSSSS
     </div>
   )
 }

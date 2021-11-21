@@ -5,8 +5,8 @@ import { NewVendedor } from './views/vendedores/NewVendedor';
 import { ShowVendedores } from './views/vendedores/ShowVendedores';
 import { Vendedor } from './views/vendedores/Vendedor';
 import { Vendedores } from './views/vendedores/Vendedores';
-import  Produtos  from './views/produtos';
-import  Servicos  from './views/servicos';
+import  Produtos  from './views/metas';
+import  Servicos  from './views/objetivos';
 import  Lojas  from './views/lojas/show_lojas';
 import  NewLoja  from './views/lojas/new_loja';
 
@@ -97,7 +97,7 @@ const routes = [
   { path: '/vendedores', exact: true, name: 'Vendedores', component: Vendedores },
   { path: '/vendedores/:id', exact: true, name: 'Vendedores', component: Vendedor },
   //produtos
-  { path: '/produtos',  name: 'Produtos', component: Produtos },
+  { path: '/metas',  name: 'Produtos', component: Produtos },
   //produtos
   { path: '/servicos',  name: 'Servicos', component: Servicos },
   { path: '/lojas',  name: 'Lojas', component: Lojas , exact: true},
