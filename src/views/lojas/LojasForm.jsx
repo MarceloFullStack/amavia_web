@@ -7,73 +7,27 @@ import {
   CButton,
   CForm,
 } from "@coreui/react";
-import React, { useEffect } from "react";
-import { useHistory, useParams } from "react-router";
-import UserService from "src/services/auth/user.service";
-import { useForm, Controller } from "react-hook-form";
 import useYupValidationResolver from "src/hooks/useYupValidationResolver";
 import * as yup from "yup";
+import useFetchData from "src/hooks/useFetchData";
+
+
 const initialValues = {
   nome: "",
   descricao: "",
 };
+
+const somenteLetras = /^[a-zA-Z\s]+$/;
 const validationSchema = yup
-  .object({
-    nome: yup.string().required("O campo nome é obrigatório"),
+  .object().shape({
+    nome: yup.string().matches(somenteLetras, "campo so aceita letras").required("O campo nome é obrigatório"),
     descricao: yup.string().required("O campo descrição é obrigatório"),
   })
-  .required();
 
 export const LojasForm = (item = null) => {
   const resolver = useYupValidationResolver(validationSchema);
-  const {
-    control,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({ mode: "onBlur", resolver });
-  const history = useHistory();
-  let { id } = useParams();
-  const [data, setData] = React.useState(initialValues);
-  const [load, setLoad] = React.useState(false);
+  const [control, Controller ,handleSubmit, onSubmit, errors, data, id, load] = useFetchData("lojas", initialValues, resolver);
 
-  useEffect(() => {
-    if (id) {
-      setLoad(true);
-      UserService.getOne("lojas/", id)
-        .then((response) => {
-          setData(response.data);
-        })
-        .then((res) => {
-          setLoad(false);
-        });
-    }
-  }, [id]);
-
-  useEffect(() => {
-    reset(data);
-  }, [data, reset]);
-
-  const onSubmit = (e) => {
-    console.log(e);
-    // e.preventDefault();
-    if (id) {
-      UserService.update(`lojas/${id}`, e).then((response) => {
-        console.log(response);
-      });
-    } else {
-      UserService.create("lojas", e).then((response) => {
-        console.log(response);
-      });
-    }
-    history.push(`/lojas`);
-  };
-
-  // const onchange = (e) => {
-  //   const target = e.target;
-  //   setData({ ...value, [target.name]: target.value });
-
-  // };
   if (load) {
     return <div>Carregando...</div>;
   }
