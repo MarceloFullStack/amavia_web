@@ -18,7 +18,7 @@ export const VendedorForm = (item = null) => {
       setLoad(true)
       UserService.getOne('vendedores/', id).then((response) => {
         setValue(response.data);
-      }).then((res)=>{
+      }).then(()=>{
         setLoad(false);
       });
 
@@ -56,14 +56,6 @@ export const VendedorForm = (item = null) => {
       return false;
     }
     setErroMsg(null)
-    return true;
-  };
-  const validateCPF = (e) => {
-    const target = e.target;
-    if (target.value.length < 11) {
-      setValue({ ...value, [target.name]: target.value });
-      return false;
-    }
     return true;
   };
   return (

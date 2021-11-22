@@ -1,6 +1,6 @@
 import { CToast, CToastBody, CToaster, CToastHeader } from "@coreui/react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 
 export default function Toast() {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export default function Toast() {
     return () => {
       dispatch({ type: "rrr", toast: false })
     }
-  }, [])
+  }, [dispatch])
   return (
     <>
         <CToaster

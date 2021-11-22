@@ -4,7 +4,6 @@ import {
   CFormGroup,
   CLabel,
   CInput,
-  CInvalidFeedback,
   CButton,
   CForm,
 } from "@coreui/react";
@@ -12,18 +11,27 @@ import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router";
 import UserService from "src/services/auth/user.service";
 import { useForm, Controller } from "react-hook-form";
+import useYupValidationResolver from 'src/hooks/useYupValidationResolver';
+import * as yup from "yup";
 const initialValues = {
   nome: "",
   descricao: "",
+
 };
+const validationSchema = yup.object({
+nome: yup.string().required("O campo nome é obrigatório"),
+descricao: yup.string().required("O campo descrição é obrigatório"),
+}).required();
+
+
 export const LojasForm = (item = null) => {
-  const { control, handleSubmit, reset } = useForm({mode: 'onBlur'});
-  // const onSubmit = (data) => console.log(data);
+  const resolver = useYupValidationResolver(validationSchema);
+  const { control, handleSubmit,  reset, formState:{ errors } } = useForm({mode: 'onBlur', resolver});
   const history = useHistory();
   let { id } = useParams();
   const [data, setData] = React.useState(initialValues);
   const [load, setLoad] = React.useState(false);
-  const [erroMsg, setErroMsg] = React.useState(null);
+
 
   useEffect(() => {
     if (id) {
@@ -40,7 +48,7 @@ export const LojasForm = (item = null) => {
 
 useEffect(() => {
   reset(data);
-}, [data]);
+}, [data, reset]);
   const onSubmit = (e) => {
     console.log(e)
     // e.preventDefault();
@@ -62,6 +70,10 @@ useEffect(() => {
   //   setData({ ...value, [target.name]: target.value });
 
   // };
+  if (load) {
+    return <div>Carregando...</div>;
+  }
+
 
   return (
     <>
@@ -79,8 +91,10 @@ useEffect(() => {
                     {...field}
                     ref={ref}
                  />
-                )}
-              />
+
+                 )}
+                 />
+                 <p>{errors.nome?.message}</p>
             </CFormGroup>
           </CCol>
           <CCol xs="12" md="6">
@@ -96,6 +110,7 @@ useEffect(() => {
                   ref={ref}/>
                   )}
                   />
+                  <p>{errors.descricao?.message}</p>
                   </CFormGroup>
           </CCol>
         </CRow>

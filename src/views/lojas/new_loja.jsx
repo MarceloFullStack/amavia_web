@@ -1,7 +1,5 @@
 import CIcon from "@coreui/icons-react";
 import { CCard, CCardHeader, CBadge, CCardBody } from "@coreui/react";
-import React from "react";
-import { useParams } from "react-router";
 import { LojasForm } from "./LojasForm";
 // import {VendedorForm} from "./components/VendedorForm"
 function NewLoja  ()  {

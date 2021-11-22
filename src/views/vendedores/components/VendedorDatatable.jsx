@@ -38,7 +38,7 @@ export default function VendedorDatatable() {
     return () => {
       console.log("cleanup");
     };
-  }, []);
+  }, [items]);
 
   // const [items, setItems] = useState(usersData)
 

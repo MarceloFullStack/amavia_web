@@ -42,7 +42,7 @@ function ShowLojas() {
     return () => {
       console.log("cleanup");
     };
-  }, [render]);
+  }, [render, history.location.pathname]);
 
   const fields = [
     { key: "id", label: "Código", _style: { width: "10%" } },

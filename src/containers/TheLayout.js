@@ -1,4 +1,3 @@
-import jwt from "jsonwebtoken";
 import React, { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { TheContent, TheFooter, TheHeader, TheSidebar } from "./index";
@@ -9,10 +8,10 @@ const TheLayout = () => {
 
 
   useEffect(() => {
-    var token = '';
-    if(user && user.jwt){
-      token = user.jwt
-    }
+    // var token = '';
+    // if(user && user.jwt){
+    //   token = user.jwt
+    // }
     if (!user) {
       setAuthenticated(false);
       localStorage.removeItem("user");
